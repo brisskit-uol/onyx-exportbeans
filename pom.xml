@@ -1,0 +1,111 @@
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+    >
+    <modelVersion>4.0.0</modelVersion>
+	<artifactId>exportbeans</artifactId>
+
+	<groupId>org.brisskit.app.onyx</groupId>
+	<version>1.0-RC1</version>
+
+	<name>XMLBeans for Onyx Export Files. For BRISSkit.</name>
+
+	<description>Generated XMLBeans for creating and manipulating Onyx export files.
+	             Generated using an export file produced by Onyx version 1.7</description>
+	
+	<url>http://www.brisskit.le.ac.uk</url>
+
+	<!--
+		+ | The distributionManagement element is required for deploying an
+		artifact to a remote repository +
+	-->
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Brisskit Maven Snapshots</name>
+			<url>scpexe://maven.brisskit.org/var/local/brisskit/sonatype-work/nexus/storage/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Brisskit Maven Releases</name>
+			<url>scpexe://maven.brisskit.org/var/local/brisskit/sonatype-work/nexus/storage/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xmlbeans-maven-plugin</artifactId>
+				<version>2.3.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>xmlbeans</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>src/xsd</schemaDirectory>
+					<!--
+						classGenerationDirectory>target/classes</classGenerationDirectory
+					-->
+					<!-- sourceGenerationDirectory>src/java</sourceGenerationDirectory -->
+					<noPvr>true</noPvr>
+					<staleFile>target/staleFlag</staleFile>
+					<verbose>true</verbose>
+					<download>true</download>
+					<outputJar>lib/${artifactId}.jar</outputJar>
+					<defaultXmlConfigDir>config</defaultXmlConfigDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+
+			<!--+
+                | JavaDoc documentation.
+                +-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+
+	</reporting>
+
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>Brisskit Maven Repo</name>
+			<url>http://maven.brisskit.org/nexus/content/groups/public</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories> 
+
+</project>

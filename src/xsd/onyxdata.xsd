@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://brisskit.org/xml/onyxdata/v1.0/od"
+	xmlns="http://brisskit.org/xml/onyxdata/v1.0/od"
+	attributeFormDefault="unqualified" elementFormDefault="qualified"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="valueSet" type="valueSetType"/>
+  <xs:complexType name="valueSetType">
+    <xs:sequence>
+      <xs:element type="variableValueType" name="variableValue" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="valueTable"/>
+    <xs:attribute type="xs:string" name="entityType"/>
+    <xs:attribute type="xs:string" name="entityIdentifier"/>
+  </xs:complexType>
+  <xs:complexType name="valueType" mixed="true">
+    <xs:sequence>
+      <xs:element type="valueType" name="value" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="class" use="optional"/>
+    <xs:attribute type="xs:string" name="valueType" use="optional"/>
+    <xs:attribute type="xs:string" name="size" use="optional"/>
+    <xs:attribute type="xs:string" name="order" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="variableValueType">
+    <xs:sequence>
+      <xs:element type="valueType" name="value"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="variable" use="optional"/>
+  </xs:complexType>
+</xs:schema>
