@@ -64,7 +64,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<schemaDirectory>src/xsd</schemaDirectory>
+					<schemaDirectory>src/main/xsd</schemaDirectory>
 					<!--
 						classGenerationDirectory>target/classes</classGenerationDirectory
 					-->
