@@ -16,10 +16,3 @@ mvn clean deploy
 
 The clean cycle will remove the annoying staleFlag from the target directory.
 Otherwise, the results will not be what you expected  :-)
-
-*==============*
-* PLEASE NOTE:
-*==============*
-The accompanying shell scripts (mvn-install.sh and mvn-deploy.sh) - or their bat
-equivalents - are the preferred way of generating and building the xmlbeans.
-They ensure that the licence agreement is copied into the resulting jar.
